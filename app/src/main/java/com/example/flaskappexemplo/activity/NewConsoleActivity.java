@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 public class NewConsoleActivity extends AppCompatActivity {
 
-    private EditText editName, editYear, editPrice;
+    private EditText editName, editYear, editPrice, editActiveSale, editAmountGames;
     private long id;
     private Console console;
     @Override
@@ -32,6 +32,8 @@ public class NewConsoleActivity extends AppCompatActivity {
         editName = findViewById(R.id.editName);
         editYear = findViewById(R.id.editYear);
         editPrice = findViewById(R.id.editPrice);
+        editActiveSale = findViewById(R.id.editActiveSale);
+        editAmountGames = findViewById(R.id.editAmountGames);
 
         id = getIntent().getLongExtra("ID",0);
 
@@ -51,10 +53,14 @@ public class NewConsoleActivity extends AppCompatActivity {
                     console.setName(response.getString("name"));
                     console.setYear(response.getInt("year"));
                     console.setPrice(response.getDouble("price"));
+                    console.setActiveSale(response.getString("active_sale"));
+                    console.setAmountGames(response.getInt("amount_games"));
 
                     editName.setText(console.getName());
                     editYear.setText(String.valueOf(console.getYear()));
                     editPrice.setText(String.valueOf(console.getPrice()));
+                    editActiveSale.setText(console.getActiveSale());
+                    editAmountGames.setText(String.valueOf(console.getAmountGames()));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -76,6 +82,8 @@ public class NewConsoleActivity extends AppCompatActivity {
             object.put("name",editName.getText().toString());
             object.put("year",Integer.parseInt(editYear.getText().toString()));
             object.put("price",Double.parseDouble(editPrice.getText().toString()));
+            object.put("active_sale",editActiveSale.getText().toString());
+            object.put("amount_games",Integer.parseInt(editAmountGames.getText().toString()));
 
             JsonObjectRequest request = new JsonObjectRequest(method, url, object, new Response.Listener<JSONObject>() {
                 @Override

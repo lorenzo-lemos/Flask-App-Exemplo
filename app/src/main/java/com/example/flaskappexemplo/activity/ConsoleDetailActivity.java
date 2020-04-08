@@ -23,7 +23,7 @@ import org.json.JSONObject;
 
 public class ConsoleDetailActivity extends AppCompatActivity {
 
-    private TextView textName, textYear, textPrice;
+    private TextView textName, textYear, textPrice, textActiveSale, textAmountGames;
     private long id;
     private Console console;
     @Override
@@ -36,6 +36,8 @@ public class ConsoleDetailActivity extends AppCompatActivity {
         textName = findViewById(R.id.textName);
         textYear = findViewById(R.id.textYear);
         textPrice = findViewById(R.id.textPrice);
+        textActiveSale = findViewById(R.id.textActiveSale);
+        textAmountGames = findViewById(R.id.textAmountGames);
     }
 
     @Override
@@ -55,10 +57,14 @@ public class ConsoleDetailActivity extends AppCompatActivity {
                     console.setName(response.getString("name"));
                     console.setYear(response.getInt("year"));
                     console.setPrice(response.getDouble("price"));
+                    console.setActiveSale(response.getString("active_sale"));
+                    console.setAmountGames(response.getInt("amount_games"));
 
                     textName.setText(console.getName());
                     textYear.setText(String.valueOf(console.getYear()));
                     textPrice.setText(String.valueOf(console.getPrice()));
+                    textPrice.setText(String.valueOf(console.getActiveSale()));
+                    textPrice.setText(String.valueOf(console.getAmountGames()));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

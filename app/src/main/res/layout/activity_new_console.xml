@@ -24,6 +24,18 @@
         android:hint="Preço"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/editActiveSale"
+        android:inputType="text"
+        android:hint="Venda Ativa?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <EditText
+        android:id="@+id/editAmountGames"
+        android:inputType="number"
+        android:hint="Jogos Fabricados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <Button
         android:text="Salvar"
         android:onClick="saveConsole"
